@@ -14,7 +14,7 @@ public:
         ARCTAN
     };
 
-    Distortion(DriveType driveType = TANH);
+    explicit Distortion(DriveType driveType = TANH);
     ~Distortion();
     void process(float input);
     float getSample();

@@ -13,14 +13,18 @@ int main(int argc, char **argv)
     float samplerate = jack.getSamplerate();
 
     // testTone
-    Oscillator oscillator(samplerate);
+    Oscillator testTone(samplerate, 440);
 
     // assign a function to the JackModule::onProces
-    jack.onProcess = [](jack_default_audio_sample_t *inBuf,
+    jack.onProcess = [&testTone](jack_default_audio_sample_t *inBuf,
                         jack_default_audio_sample_t *outBuf, jack_nframes_t nframes) {
         for(unsigned int i = 0; i < nframes; i++) {
+
             // write input to output
-            outBuf[i] = inBuf[i];
+            outBuf[i] = testTone.getSample() * 0.5;
+
+            // update oscillator
+            testTone.tick();
         }
         return 0;
     };

@@ -13,6 +13,8 @@ add_executable(SvE-Distortion
         source/jack_module.cpp source/jack_module.h
         source/oscillator.cpp source/oscillator.hpp
         source/distortion.cpp source/distortion.hpp
+        source/firFilter.cpp source/firFilter.hpp
+        source/filterCoefficients.cpp source/filterCoefficients.hpp
 )
 
 # Link against the Jack2 library

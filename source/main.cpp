@@ -1,7 +1,7 @@
 #include <iostream>
 #include "jack_module.h"
-#include "distortion.hpp"
 #include "oscillator.hpp"
+#include "distortion.hpp"
 
 int main(int argc, char **argv)
 {
@@ -12,16 +12,20 @@ int main(int argc, char **argv)
     jack.init(argv[0]);
     float samplerate = jack.getSamplerate();
 
-    // testTone
+    // init objects
     Oscillator testTone(samplerate, 440);
+    Distortion distortion(samplerate, Distortion::TANH);
 
     // assign a function to the JackModule::onProces
-    jack.onProcess = [&testTone](jack_default_audio_sample_t *inBuf,
+    jack.onProcess = [&testTone, &distortion](jack_default_audio_sample_t *inBuf,
                         jack_default_audio_sample_t *outBuf, jack_nframes_t nframes) {
         for(unsigned int i = 0; i < nframes; i++) {
+            // process distortion
+//            distortion.process(inBuf[i]);
+            distortion.process(testTone.getSample());
 
             // write input to output
-            outBuf[i] = testTone.getSample() * 0.5;
+            outBuf[i] = 0.5 * distortion.getSample();
 
             // update oscillator
             testTone.tick();

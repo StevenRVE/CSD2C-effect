@@ -3,4 +3,8 @@
 2. https://www.youtube.com/watch?v=_0ys155xv1Q
 3. https://www.dsprelated.com/freebooks/pasp/Nonlinear_Distortion.html
 4. https://www.dsprelated.com/freebooks/mdft/Alias_Operator.html
-5. 
+
+
+### Graphs
+![Equations Graph 1](distortionEquationsGraph1.jpg)
+https://www.desmos.com/calculator/dxdjbp8qgc

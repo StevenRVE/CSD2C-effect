@@ -25,7 +25,7 @@ public:
 
 private:
     float preGain{1.0f};
-    float drive{0.5f};
+    float drive{2.0f};
     float previousDrive{0.5f};
     float alpha{0.3f};
     float outputSample{0.0f};

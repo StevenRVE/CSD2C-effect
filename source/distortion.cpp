@@ -16,7 +16,7 @@ void Distortion::process(float input)
 {
     switch (getDriveType()) {
         case TANH:
-            outputSample = /*preGain*/ 0.8f * tanh(/*drive*/ 5.0f * input);
+            outputSample = preGain * tanh(drive * input);
             break;
         case ARCTAN:
             outputSample = preGain * atanf(drive * input);

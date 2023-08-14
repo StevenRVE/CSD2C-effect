@@ -10,8 +10,8 @@
 extern const int ANTI_ALIASING_LOW_QUALITY_TAPS;
 extern const float antiAliasingLowQuality[];
 
-extern const int ANTI_ALIASING_MIDDLE_QUALITY_TAPS;
-extern const float antiAliasingMiddleQuality[];
+extern const int ANTI_ALIASING_MEDIUM_QUALITY_TAPS;
+extern const float antiAliasingMediumQuality[];
 
 extern const int ANTI_ALIASING_HIGH_QUALITY_TAPS;
 extern const float antiAliasingHighQuality[];

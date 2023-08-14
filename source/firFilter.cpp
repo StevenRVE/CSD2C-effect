@@ -70,8 +70,8 @@ void FIRFilter::setFilterType(FilterType filterType) {
             filterTaps = ANTI_ALIASING_LOW_QUALITY_TAPS;
             break;
         case FILTER_ANTIALIASING_MEDIUM_QUALITY:
-            filterCoefficients = antiAliasingMidQuality;
-            filterTaps = ANTI_ALIASING_MID_QUALITY_TAPS;
+            filterCoefficients = antiAliasingMediumQuality;
+            filterTaps = ANTI_ALIASING_MEDIUM_QUALITY_TAPS;
             break;
         case FILTER_ANTIALIASING_HIGH_QUALITY:
             filterCoefficients = antiAliasingHighQuality;

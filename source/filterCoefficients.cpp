@@ -54,8 +54,8 @@ const float antiAliasingLowQuality[] =
     -0.01573471304144745
 };
 
-const int ANTI_ALIASING_MIDDLE_QUALITY_TAPS = 93;
-const float antiAliasingMidQuality[] =
+const int ANTI_ALIASING_MEDIUM_QUALITY_TAPS = 93;
+const float antiAliasingMediumQuality[] =
 {
     0.0032864066335093153,
     0.007838152648805913,

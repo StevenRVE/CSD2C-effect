@@ -61,8 +61,8 @@ int main(int argc, char **argv)
 
     std::cout << "Available commands:\n";
     std::cout << "q: Quit the program.\n";
-    std::cout << "drive <value>: Set the drive intensity (0.0 - 10.0).\n";
-    std::cout << "pre-gain <value>: Set the pre-gain amplitude (0.0 - 1.0).\n";
+    std::cout << "drive <value>: Set the drive intensity (0.0 - 20.0).\n";
+    std::cout << "pre-gain <value>: Set the pre-gain amplitude (0.1 - 2.0).\n";
     std::cout << "driveType <type>: Choose distortion type (tanh or arctan).\n";
     std::cout << "frequency <value>: Set the test tone frequency.\n";
     std::cout << "help: Show this command list.\n\n";
@@ -86,18 +86,41 @@ int main(int argc, char **argv)
         }
         else if (command == "drive" || command == "d")
         {
-            distortion.setDrive(inputValue);
-            std::cout << "Drive set to " << inputValue << std::endl;
+            if (inputValue >= 0.1f && inputValue <= 30.0f) {
+                distortion.setDrive(inputValue);
+                std::cout << "Drive set to " << inputValue << std::endl;
+            } else {
+                std::cout << "Invalid input value for drive" << std::endl;
+            }
         }
-        else if (command == "pre-gain" || command == "p")
+        else if (command == "pre-gain" || command == "pg") {
+            if (inputValue >= 0.1f && inputValue <= 2.0f) {
+                distortion.setPreGain(inputValue);
+                std::cout << "Pre-gain set to " << inputValue << std::endl;
+            } else {
+                std::cout << "Invalid input value for pre-gain" << std::endl;
+            }
+        }
+        else if (command == "driveType" || command == "dt")
         {
-            distortion.setPreGain(inputValue);
-            std::cout << "Pre-gain set to " << inputValue << std::endl;
+            if (inputValue == 0) {
+                distortion.setDriveType(Distortion::TANH);
+                std::cout << "Drive type set to tanh" << std::endl;
+            } else if (inputValue == 1) {
+                distortion.setDriveType(Distortion::ARCTAN);
+                std::cout << "Drive type set to arctan" << std::endl;
+            } else {
+                std::cout << "Invalid input value for drive type" << std::endl;
+            }
         }
         else if (command == "frequency" || command == "f")
         {
-            testTone.setFrequency(inputValue);
-            std::cout << "Frequency set to " << inputValue << std::endl;
+            if (inputValue >= 0.1f && inputValue <= 22000.0f) {
+                testTone.setFrequency(inputValue);
+                std::cout << "Frequency set to " << inputValue << std::endl;
+            } else {
+                std::cout << "Invalid input value for frequency" << std::endl;
+            }
         }
         else
         {

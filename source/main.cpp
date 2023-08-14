@@ -161,6 +161,5 @@ int main(int argc, char **argv)
             std::cout << "Unknown command" << std::endl;
         }
     }
-
     return 0;
 }

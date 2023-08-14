@@ -63,7 +63,7 @@ float Oscillator::getSample()
 void Oscillator::calculateNextSineSample()
 {
     double value = amplitude * sin(phase);
-    phase += TWOPI * frequency / sampleRate;
+    phase += TWOPI * frequency / (float)sampleRate;
 
     if (phase > TWOPI) {
         phase -= TWOPI;

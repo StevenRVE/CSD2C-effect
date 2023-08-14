@@ -4,8 +4,7 @@
 
 #include "distortion.hpp"
 
-Distortion::Distortion(double sampleRate, DriveType driveType) :
-sampleRate(sampleRate),
+Distortion::Distortion(DriveType driveType) :
 driveType(driveType)
 {
 
@@ -44,11 +43,6 @@ void Distortion::setDrive(float newDrive)
 {
     float value = (newDrive * alpha) + (previousDrive * alpha);
     this->drive = value;
-}
-
-void Distortion::setSampleRate(double sampleRate)
-{
-    this->sampleRate = sampleRate;
 }
 
 void Distortion::setDriveType(Distortion::DriveType driveType) {

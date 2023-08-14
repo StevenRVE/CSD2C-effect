@@ -20,7 +20,6 @@ public:
     float getSample();
     void setPreGain(float preGain);
     void setDrive(float newDrive);
-    void setSampleRate(double sampleRate);
     void setDriveType(DriveType driveType);
     DriveType getDriveType();
 

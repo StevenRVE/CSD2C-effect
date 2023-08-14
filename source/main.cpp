@@ -6,6 +6,7 @@
 #include "jack_module.h"
 #include "oscillator.hpp"
 #include "distortion.hpp"
+#include "firFilter.hpp"
 
 int main(int argc, char **argv)
 {
@@ -19,6 +20,8 @@ int main(int argc, char **argv)
     // init objects
     Oscillator testTone(samplerate, 440);
     Distortion distortion(Distortion::TANH);
+    FIRFilter antiAliasingFilter;
+    antiAliasingFilter.initializeBuffer();
 
     // Parse command line arguments
     // -D <drive type> : Specify the drive type <tanh|arctan>
@@ -41,12 +44,14 @@ int main(int argc, char **argv)
     }
 
     // assign a function to the JackModule::onProces
-    jack.onProcess = [&testTone, &distortion](jack_default_audio_sample_t *inBuf,
+    jack.onProcess = [&testTone, &distortion, &antiAliasingFilter](jack_default_audio_sample_t *inBuf,
                         jack_default_audio_sample_t *outBuf, jack_nframes_t nframes) {
         for(unsigned int i = 0; i < nframes; i++) {
-            // process distortion
-//            distortion.process(inBuf[i]);
-            distortion.process(testTone.getSample());
+            // anti-aliasing filter
+            antiAliasingFilter.process(testTone.getSample());
+
+            // distortion
+            distortion.process(antiAliasingFilter.getSample());
 
             // write input to output
             outBuf[i] = 0.5 * distortion.getSample();

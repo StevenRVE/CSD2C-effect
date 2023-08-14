@@ -10,10 +10,7 @@ driveType(driveType)
 
 }
 
-Distortion::~Distortion()
-{
-
-}
+Distortion::~Distortion() = default;
 
 void Distortion::process(float input)
 {

@@ -5,7 +5,7 @@
 #include "oscillator.hpp"
 
 
-Oscillator::Oscillator(double sampleRate, float frequency, Oscillator::Waveform waveform) :
+Oscillator::Oscillator(double sampleRate, float frequency, Waveform waveform) :
 frequency(frequency),
 sampleRate(sampleRate),
 waveform(waveform)

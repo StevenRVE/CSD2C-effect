@@ -66,11 +66,15 @@ int main(int argc, char **argv)
 
     std::cout << "Available commands:\n";
     std::cout << "q: Quit the program.\n";
-    std::cout << "drive <value>: Set the drive intensity (0.0 - 20.0).\n";
-    std::cout << "pre-gain <value>: Set the pre-gain amplitude (0.1 - 2.0).\n";
-    std::cout << "driveType <type>: Choose distortion type (tanh or arctan).\n";
-    std::cout << "frequency <value>: Set the test tone frequency.\n";
-    std::cout << "help: Show this command list.\n\n";
+    std::cout << "d|drive <value>: Set the drive intensity (0.0 - 20.0).\n";
+    std::cout << "pg|pre-gain <value>: Set the pre-gain amplitude (0.1 - 2.0).\n";
+    std::cout << "dt|driveType <type>: Choose distortion type (tanh or arctan).\n";
+    std::cout << "f|frequency <value>: Set the test tone frequency (1.0 - 20000.0).\n";
+    std::cout << "aa|AntiAliasing FilterType <type>: Choose filter type \n"
+                 "    1: FILTER_ANTIALIASING_LOW_QUALITY\n"
+                 "    2: FILTER_ANTIALIASING_MEDIUM_QUALITY\n"
+                 "    3: FILTER_ANTIALIASING_HIGH_QUALITY)\n";
+    std::cout << "h|help: Show this command list.\n\n";
 
     bool running = true;
     std::string command;
@@ -126,6 +130,31 @@ int main(int argc, char **argv)
             } else {
                 std::cout << "Invalid input value for frequency" << std::endl;
             }
+        }
+        else if (command == "antiAliasingFilter" || command == "aa")
+        {
+            if (inputValue == 1) {
+                antiAliasingFilter.setFilterType(FILTER_ANTIALIASING_LOW_QUALITY);
+                std::cout << "AntiAliasing filter set to low quality" << std::endl;
+            } else if (inputValue == 2) {
+                antiAliasingFilter.setFilterType(FILTER_ANTIALIASING_MEDIUM_QUALITY);
+                std::cout << "AntiAliasing filter set to medium quality" << std::endl;
+            } else if (inputValue == 3) {
+                antiAliasingFilter.setFilterType(FILTER_ANTIALIASING_HIGH_QUALITY);
+                std::cout << "AntiAliasing filter set to high quality" << std::endl;
+            } else {
+                std::cout << "Invalid input value for anti-aliasing filter type" << std::endl;
+            }
+        }
+        else if (command == "help" || command == "h")
+        {
+            std::cout << "Available commands:\n";
+            std::cout << "q: Quit the program.\n";
+            std::cout << "drive <value>: Set the drive intensity (0.0 - 20.0).\n";
+            std::cout << "pre-gain <value>: Set the pre-gain amplitude (0.1 - 2.0).\n";
+            std::cout << "driveType <type>: Choose distortion type (tanh or arctan).\n";
+            std::cout << "frequency <value>: Set the test tone frequency.\n";
+            std::cout << "help: Show this command list.\n\n";
         }
         else
         {

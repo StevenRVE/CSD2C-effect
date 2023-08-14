@@ -124,7 +124,7 @@ int main(int argc, char **argv)
         }
         else if (command == "frequency" || command == "f")
         {
-            if (inputValue >= 0.1f && inputValue <= 22000.0f) {
+            if (inputValue >= 0.1f && inputValue <= 20000.0f) {
                 testTone.setFrequency(inputValue);
                 std::cout << "Frequency set to " << inputValue << std::endl;
             } else {

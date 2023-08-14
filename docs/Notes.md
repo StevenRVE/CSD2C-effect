@@ -8,12 +8,17 @@
 7. https://en.cppreference.com/w/cpp/container/unordered_map
 
 
-# Graphs
-![Equations Graph 1](distortionEquationsGraph1.jpg)
+# Distortion Equations
+Distortion Equations Graph 1:
 https://www.desmos.com/calculator/dxdjbp8qgc
+![Distortion Equations Graph](distortionEquationsGraph1.jpg)
 
 # Filters
 ## antiAliasingLowQuality:
+
+![Anti Aliasing FIR Filter Low Quality](antiAliasingFIRFilterLowQuality.jpg)
+Anti Aliasing FIR Filter Low Quality
+
 FIR filter designed with
 http://t-filter.appspot.com
 
@@ -29,7 +34,13 @@ sampling frequency: 44100 Hz
   desired attenuation = -40 dB
   actual attenuation = -40.505116882329084 dB
 
-## antiAliasingMiddleQuality:
+
+
+## antiAliasingMediumQuality:
+
+![Anti Aliasing FIR Filter Medium Quality](antiAliasingFIRFilterMediumQuality.jpg)
+Anti Aliasing FIR Filter Medium Quality
+
 FIR filter designed with
 http://t-filter.appspot.com
 
@@ -46,6 +57,9 @@ sampling frequency: 44100 Hz
   actual attenuation = -60.94654043925138 dB
 
 ## antiAliasingHighQuality
+![Anti Aliasing FIR Filter High Quality](antiAliasingFIRFilterHighQuality.jpg)
+Anti Aliasing FIR Filter High Quality
+
 FIR filter designed with
 http://t-filter.appspot.com
 

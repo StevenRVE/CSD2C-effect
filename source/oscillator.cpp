@@ -21,10 +21,7 @@ waveform(waveform)
 
 }
 
-Oscillator::~Oscillator()
-{
-
-}
+Oscillator::~Oscillator() = default;
 
 void Oscillator::setSampleRate(double sampleRate)
 {

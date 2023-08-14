@@ -1,4 +1,8 @@
 #include <iostream>
+#include <cstring>
+#include <string>
+#include <sstream>
+
 #include "jack_module.h"
 #include "oscillator.hpp"
 #include "distortion.hpp"
@@ -55,17 +59,49 @@ int main(int argc, char **argv)
 
     jack.autoConnect();
 
-    // keep the program running and listen for user input, q = quit
-    std::cout << "\n\nPress 'q' when you want to quit the program.\n";
+    std::cout << "Available commands:\n";
+    std::cout << "q: Quit the program.\n";
+    std::cout << "drive <value>: Set the drive intensity (0.0 - 10.0).\n";
+    std::cout << "pre-gain <value>: Set the pre-gain amplitude (0.0 - 1.0).\n";
+    std::cout << "driveType <type>: Choose distortion type (tanh or arctan).\n";
+    std::cout << "frequency <value>: Set the test tone frequency.\n";
+    std::cout << "help: Show this command list.\n\n";
+
     bool running = true;
+    std::string command;
+    float inputValue;
+
+    // TODO: implement a better way to handle input using std::unordered_map
     while (running)
     {
-        switch (std::cin.get())
+        std::getline(std::cin, command);
+
+        std::istringstream iss(command);
+        iss >> command >> inputValue;
+
+        if (command == "quit" || command == "q")
         {
-            case 'q':
-                running = false;
-                jack.end();
-                break;
+            running = false;
+            jack.end();
+        }
+        else if (command == "drive" || command == "d")
+        {
+            distortion.setDrive(inputValue);
+            std::cout << "Drive set to " << inputValue << std::endl;
+        }
+        else if (command == "pre-gain" || command == "p")
+        {
+            distortion.setPreGain(inputValue);
+            std::cout << "Pre-gain set to " << inputValue << std::endl;
+        }
+        else if (command == "frequency" || command == "f")
+        {
+            testTone.setFrequency(inputValue);
+            std::cout << "Frequency set to " << inputValue << std::endl;
+        }
+        else
+        {
+            std::cout << "Unknown command" << std::endl;
         }
     }
 

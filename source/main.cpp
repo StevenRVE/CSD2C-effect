@@ -21,6 +21,7 @@ int main(int argc, char **argv)
 
     // init objects
     Oscillator testTone(samplerate, 440);
+    Distortion overdrive(Distortion::TANH);
     Distortion distortion(Distortion::TANH);
     FIRFilter antiAliasingFilter;
     antiAliasingFilter.initializeBuffer();
@@ -55,8 +56,10 @@ int main(int argc, char **argv)
             // anti-aliasing filter
             antiAliasingFilter.process(inputBuffer[i]);
 
+            antiAliasingFilter.process(highpassFilter.update(inputBuffer[i]));
+            overdrive.process(antiAliasingFilter.getSample());
             // distortion
-            distortion.process(antiAliasingFilter.getSample());
+            distortion.process(overdrive.getSample());
 
             // write input to output
             outputBuffer[i] = 0.2 * distortion.getSample();

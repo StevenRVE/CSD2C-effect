@@ -35,7 +35,7 @@ private:
     DriveType driveType{TANH};
 
     // phil variables
-    float clipIn{0.0f};
+    float distInput{0.0f};
     float absInput{0.0f};
     float signInput{0.0f};
 };

@@ -25,14 +25,20 @@ void Distortion::process(float input)
             outputSample = preGain * atanf(drive * input) / atanf(drive);
             break;
         case PHIL:
+            distInput = preGain * input;
             absInput = fabsf(input);
-            signInput = (input > 0.0f) ? 1.0f : -1.0f;
+            signInput = (distInput > 0.0f) ? 1.0f : -1.0f; // hard clipping
 
-            if (absInput < 0.5f) {
-                outputSample = 2.0f * clipIn;
-            } else if (absInput < 0.75f) {
-                outputSample = signInput * (3.0f - (2.0f * clipIn));
-            } else {
+            // linear
+            if (absInput < drive) {
+                outputSample = 2.0f * distInput;
+            }
+            // quadratic
+            else if (absInput > drive && absInput < (2.0f * drive)) {
+                outputSample = signInput * (3.0f - (3.0f - (2.0f * absInput)) * (3.0f - (2.0f * absInput))) / 3.0f;
+            }
+            // hard clipping
+            else {
                 outputSample = signInput;
             }
             break;

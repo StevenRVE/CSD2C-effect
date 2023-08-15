@@ -26,7 +26,7 @@ int main(int argc, char **argv)
     FIRFilter antiAliasingFilter;
     antiAliasingFilter.initializeBuffer();
     LowpassFilter lowpassFilter(2, 10000, samplerate);
-    HighpassFilter highpassFilter(2, 100, samplerate);
+    HighpassFilter highpassFilter(2, 60, samplerate);
 
     // Parse command line arguments
     // -D <drive type> : Specify the drive type <tanh|arctan|tsq>

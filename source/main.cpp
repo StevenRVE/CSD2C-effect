@@ -44,17 +44,18 @@ int main(int argc, char **argv)
     }
 
     // assign a function to the JackModule::onProces
-    jack.onProcess = [&testTone, &distortion, &antiAliasingFilter](jack_default_audio_sample_t *inBuf,
-                        jack_default_audio_sample_t *outBuf, jack_nframes_t nframes) {
+    jack.onProcess = [&testTone, &distortion, &antiAliasingFilter]
+        (jack_default_audio_sample_t *inputBuffer, jack_default_audio_sample_t *outputBuffer, jack_nframes_t nframes)
+    {
         for(unsigned int i = 0; i < nframes; i++) {
             // anti-aliasing filter
-            antiAliasingFilter.process(testTone.getSample());
+            antiAliasingFilter.process(inputBuffer[i]);
 
             // distortion
             distortion.process(antiAliasingFilter.getSample());
 
             // write input to output
-            outBuf[i] = 0.2 * distortion.getSample();
+            outputBuffer[i] = 0.2 * distortion.getSample();
 
             // update oscillator
             testTone.tick();

@@ -52,7 +52,7 @@ int main(int argc, char **argv)
     }
 
     // assign a function to the JackModule::onProces
-    jack.onProcess = [&testTone, &distortion, &antiAliasingFilter]
+    jack.onProcess = [&testTone, &overdrive, &distortion, &antiAliasingFilter, &lowpassFilter, &highpassFilter]
         (jack_default_audio_sample_t *inputBuffer, jack_default_audio_sample_t *outputBuffer, jack_nframes_t nframes)
     {
         for(unsigned int i = 0; i < nframes; i++) {

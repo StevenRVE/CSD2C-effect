@@ -57,7 +57,6 @@ int main(int argc, char **argv)
     {
         for(unsigned int i = 0; i < nframes; i++) {
             // anti-aliasing filter
-//            antiAliasingFilter.process(testTone.getSample());
             antiAliasingFilter.process(highpassFilter.update(inputBuffer[i]));
             overdrive.process(antiAliasingFilter.getSample());
             // distortion

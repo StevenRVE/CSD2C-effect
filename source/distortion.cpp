@@ -69,11 +69,13 @@ void Distortion::setDrive(float inputDrive)
     this->tsqDrive = 0.001f * (100.1f - inputDrive);
 }
 
-void Distortion::setDriveType(Distortion::DriveType driveType) {
+void Distortion::setDriveType(Distortion::DriveType driveType)
+{
     this->driveType = driveType;
 }
 
-Distortion::DriveType Distortion::getDriveType() {
+Distortion::DriveType Distortion::getDriveType()
+{
     return Distortion::driveType;
 }
 

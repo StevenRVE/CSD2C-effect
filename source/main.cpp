@@ -76,11 +76,14 @@ int main(int argc, char **argv)
 
     std::cout << "Available commands:\n";
     std::cout << "q: Quit the program.\n";
-    std::cout << "d|drive <value>: Set the drive intensity (0.0 - 20.0).\n";
+    std::cout << "d|drive <value>: Set the drive intensity (1.0 - 100.0).\n";
     std::cout << "pg|pre-gain <value>: Set the pre-gain amplitude (0.1 - 2.0).\n";
-    std::cout << "dt|driveType <type>: Choose distortion type (tanh or arctan).\n";
+    std::cout << "dt|driveType <type>: Choose distortion type by typing a nummber (1-3)\n"
+                 "    1: tanh\n"
+                 "    2: arctan\n"
+                 "    3: tsq\n";
     std::cout << "f|frequency <value>: Set the test tone frequency (1.0 - 20000.0).\n";
-    std::cout << "aa|AntiAliasing FilterType <type>: Choose filter type \n"
+    std::cout << "aa|AntiAliasing FilterType <type>: Choose filter type by typing a nummber (1-3)\n"
                  "    1: FILTER_ANTIALIASING_LOW_QUALITY\n"
                  "    2: FILTER_ANTIALIASING_MEDIUM_QUALITY\n"
                  "    3: FILTER_ANTIALIASING_HIGH_QUALITY)\n";
@@ -105,7 +108,7 @@ int main(int argc, char **argv)
         }
         else if (command == "drive" || command == "d")
         {
-            if (inputValue >= 0.1f && inputValue <= 30.0f) {
+            if (inputValue >= 1.0f && inputValue <= 100.0f) {
                 distortion.setDrive(inputValue);
                 std::cout << "Drive set to " << inputValue << std::endl;
             } else {
@@ -113,7 +116,7 @@ int main(int argc, char **argv)
             }
         }
         else if (command == "pre-gain" || command == "pg") {
-            if (inputValue >= 0.1f && inputValue <= 2.0f) {
+            if (inputValue >= 0.1f && inputValue <= 5.0f) {
                 distortion.setPreGain(inputValue);
                 std::cout << "Pre-gain set to " << inputValue << std::endl;
             } else {
@@ -122,18 +125,15 @@ int main(int argc, char **argv)
         }
         else if (command == "driveType" || command == "dt")
         {
-            if (inputValue == 0) {
+            if (inputValue == 1) {
                 distortion.setDriveType(Distortion::TANH);
                 std::cout << "Drive type set to tanh" << std::endl;
-            } else if (inputValue == 1) {
+            } else if (inputValue == 2) {
                 distortion.setDriveType(Distortion::ARCTAN);
                 std::cout << "Drive type set to arctan" << std::endl;
-            } else if (inputValue == 2) {
-                distortion.setDriveType(Distortion::COPILOTSUGGESTION1);
-                std::cout << "Drive type set to COPILOTSUGGESTION1" << std::endl;
             } else if (inputValue == 3) {
-                distortion.setDriveType(Distortion::PHIL);
-                std::cout << "Drive type set to PHIL" << std::endl;
+                distortion.setDriveType(Distortion::TSQ);
+                std::cout << "Drive type set to TSQ" << std::endl;
             }
             else {
                 std::cout << "Invalid input value for drive type" << std::endl;

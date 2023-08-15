@@ -11,7 +11,9 @@ class Distortion{
 public:
     enum DriveType{
         TANH,
-        ARCTAN
+        ARCTAN,
+        COPILOTSUGGESTION1,
+        PHIL
     };
 
     explicit Distortion(DriveType driveType = TANH);
@@ -31,6 +33,11 @@ private:
     float outputSample{0.0f};
 
     DriveType driveType{TANH};
+
+    // phil variables
+    float clipIn{0.0f};
+    float absInput{0.0f};
+    float signInput{0.0f};
 };
 
 #endif //SVE_CHORUS_ARCTANGENTDISTORTION_HPP

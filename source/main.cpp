@@ -54,7 +54,7 @@ int main(int argc, char **argv)
             distortion.process(antiAliasingFilter.getSample());
 
             // write input to output
-            outBuf[i] = 0.5 * distortion.getSample();
+            outBuf[i] = 0.2 * distortion.getSample();
 
             // update oscillator
             testTone.tick();
@@ -118,7 +118,14 @@ int main(int argc, char **argv)
             } else if (inputValue == 1) {
                 distortion.setDriveType(Distortion::ARCTAN);
                 std::cout << "Drive type set to arctan" << std::endl;
-            } else {
+            } else if (inputValue == 2) {
+                distortion.setDriveType(Distortion::COPILOTSUGGESTION1);
+                std::cout << "Drive type set to COPILOTSUGGESTION1" << std::endl;
+            } else if (inputValue == 3) {
+                distortion.setDriveType(Distortion::PHIL);
+                std::cout << "Drive type set to PHIL" << std::endl;
+            }
+            else {
                 std::cout << "Invalid input value for drive type" << std::endl;
             }
         }

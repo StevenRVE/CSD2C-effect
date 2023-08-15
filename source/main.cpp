@@ -29,7 +29,7 @@ int main(int argc, char **argv)
     HighpassFilter highpassFilter(2, 100, samplerate);
 
     // Parse command line arguments
-    // -D <drive type> : Specify the drive type <tanh|arctan>
+    // -D <drive type> : Specify the drive type <tanh|arctan|tsq>
     for(int i = 0 ; i < argc ; i++) {
         if(strcmp(argv[i], "-D") == 0) {
             if (i + 1 < argc) {
@@ -37,7 +37,10 @@ int main(int argc, char **argv)
                     distortion.setDriveType(Distortion::TANH);
                 } else if (strcmp(argv[i + 1], "arctan") == 0) {
                     distortion.setDriveType(Distortion::ARCTAN);
-                } else {
+                } else if (strcmp(argv[i + 1], "tsq") == 0) {
+                distortion.setDriveType(Distortion::TSQ);
+                }
+                else {
                     std::cerr << "Error: Invalid drive type specified.\n";
                     return 1; // Exit with an error code
                 }
@@ -54,8 +57,7 @@ int main(int argc, char **argv)
     {
         for(unsigned int i = 0; i < nframes; i++) {
             // anti-aliasing filter
-            antiAliasingFilter.process(inputBuffer[i]);
-
+//            antiAliasingFilter.process(testTone.getSample());
             antiAliasingFilter.process(highpassFilter.update(inputBuffer[i]));
             overdrive.process(antiAliasingFilter.getSample());
             // distortion

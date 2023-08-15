@@ -64,7 +64,7 @@ int main(int argc, char **argv)
             distortion.process(overdrive.getSample());
 
             // write input to output
-            outputBuffer[i] = 0.2 * distortion.getSample();
+            outputBuffer[i] = 0.2 * lowpassFilter.update(distortion.getSample());
 
             // update oscillator
             testTone.tick();

@@ -12,8 +12,7 @@ public:
     enum DriveType{
         TANH,
         ARCTAN,
-        COPILOTSUGGESTION1,
-        PHIL
+        TSQ
     };
 
     Distortion(float preGain, float drive, DriveType driveType = TANH);

@@ -4,8 +4,12 @@
 
 #include "distortion.hpp"
 
-Distortion::Distortion(DriveType driveType) :
-driveType(driveType)
+Distortion::Distortion(float preGain, float drive, Distortion::DriveType driveType)
+{
+
+}
+
+Distortion::Distortion(DriveType driveType)
 {
 
 }
@@ -21,10 +25,7 @@ void Distortion::process(float input)
         case ARCTAN:
             outputSample = preGain * atanf(drive * input);
             break;
-        case COPILOTSUGGESTION1:
-            outputSample = preGain * atanf(drive * input) / atanf(drive);
-            break;
-        case PHIL:
+        case TSQ: // Two Stage Quadratic Soft Clipping (TSQ) https://www.dafx12.york.ac.uk/papers/dafx12_submission_45.pdf
             distInput = preGain * input;
             absInput = fabsf(input);
             signInput = (distInput > 0.0f) ? 1.0f : -1.0f; // hard clipping

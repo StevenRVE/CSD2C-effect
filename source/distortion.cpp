@@ -42,6 +42,11 @@ void Distortion::process(float input)
             else {
                 outputSample = signInput;
             }
+
+            if (outputSample > 1.0f)
+                outputSample = 1.0f;
+            else if (outputSample < -1.0f)
+                outputSample = -1.0f;
             break;
         default:
             break;

@@ -6,7 +6,8 @@
 5. https://en.cppreference.com/w/cpp/io/cerr
 6. https://www.programiz.com/c-programming/library-function/string.h/strcmp
 7. https://en.cppreference.com/w/cpp/container/unordered_map
-
+8. DAFX: Digital Audio Effects Second Edition - Udo Zölzer: https://picture.iczhiku.com/resource/eetop/sykfGloQfYJRZBcv.pdf
+9. https://kidpatel.wixsite.com/dspaudioeffects/distortion
 
 # Distortion Equations
 Distortion Equations Graph 1:

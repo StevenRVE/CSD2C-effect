@@ -15,6 +15,9 @@ add_executable(SvE-Distortion
         source/distortion.cpp source/distortion.hpp
         source/firFilter.cpp source/firFilter.hpp
         source/filterCoefficients.cpp source/filterCoefficients.hpp
+        source/FilterLib/Filter.cpp source/FilterLib/Filter.h
+        source/FilterLib/LowpassFilter.cpp source/FilterLib/LowpassFilter.h
+        source/FilterLib/HighpassFilter.cpp source/FilterLib/HighpassFilter.h
 )
 
 # Link against the Jack2 library

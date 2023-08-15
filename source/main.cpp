@@ -7,6 +7,8 @@
 #include "oscillator.hpp"
 #include "distortion.hpp"
 #include "firFilter.hpp"
+#include "FilterLib/LowpassFilter.h"
+#include "FilterLib/HighpassFilter.h"
 
 int main(int argc, char **argv)
 {
@@ -22,6 +24,8 @@ int main(int argc, char **argv)
     Distortion distortion(Distortion::TANH);
     FIRFilter antiAliasingFilter;
     antiAliasingFilter.initializeBuffer();
+    LowpassFilter lowpassFilter(2, 10000, samplerate);
+    HighpassFilter highpassFilter(2, 100, samplerate);
 
     // Parse command line arguments
     // -D <drive type> : Specify the drive type <tanh|arctan>

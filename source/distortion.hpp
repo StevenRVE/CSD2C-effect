@@ -16,6 +16,7 @@ public:
         PHIL
     };
 
+    Distortion(float preGain, float drive, DriveType driveType = TANH);
     explicit Distortion(DriveType driveType = TANH);
     ~Distortion();
     void process(float input);

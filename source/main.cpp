@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 
     // init objects
     Oscillator testTone(samplerate, 440);
-    Distortion overdrive(Distortion::TANH);
+    Distortion overdrive(1, 10.0f, Distortion::TANH);
     Distortion distortion(Distortion::TANH);
     FIRFilter antiAliasingFilter;
     antiAliasingFilter.initializeBuffer();

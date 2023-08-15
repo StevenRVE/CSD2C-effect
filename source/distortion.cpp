@@ -65,8 +65,22 @@ void Distortion::setPreGain(float preGain)
 
 void Distortion::setDrive(float newDrive)
 {
-    float value = (newDrive * alpha) + (previousDrive * alpha);
-    this->drive = value;
+//    float value = (newDrive * alpha) + (previousDrive * alpha);
+    switch (getDriveType()) {
+        case TANH:
+            this->drive = newDrive * 0.3333f;
+            break;
+        case ARCTAN:
+            this->drive = newDrive * 0.3333f;
+            break;
+        case TSQ:
+            newDrive = 101.0f - newDrive;
+            this->drive = newDrive * 0.001f;
+            break;
+        default:
+            break;
+    }
+
 }
 
 void Distortion::setDriveType(Distortion::DriveType driveType) {

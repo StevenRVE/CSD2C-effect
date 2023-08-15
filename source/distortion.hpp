@@ -21,15 +21,14 @@ public:
     void process(float input);
     float getSample();
     void setPreGain(float preGain);
-    void setDrive(float newDrive);
+    void setDrive(float inputDrive);
     void setDriveType(DriveType driveType);
     DriveType getDriveType();
 
 private:
     float preGain{1.0f};
-    float drive{10.0f};
-    float previousDrive{0.5f};
-    float alpha{0.3f};
+    float tanDrive{10.0f};
+    float tsqDrive{1.0f};
     float outputSample{0.0f};
 
     DriveType driveType{TANH};

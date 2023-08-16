@@ -9,7 +9,7 @@ This repository is for a HKU CSD2C assignment.
 ## About
 This effect is an overdrive/distortion. It has 3 different algorithms to choose from:
 - Hyperbolic Tangent Soft Clipping(Tanh)
-- Hyperbolic Tangent Hard Clipping(Arctan)
+- Hyperbolic Inverse Tangent Hard Clipping(Arctan)
 - Two Stage Quadratic Soft Clipping(TSQ)
 
 The algorithms are based on the following paper and video:

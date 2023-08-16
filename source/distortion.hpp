@@ -33,7 +33,7 @@ private:
 
     DriveType driveType{TANH};
 
-    // phil variables
+    // TSQ variables
     float distInput{0.0f};
     float absInput{0.0f};
     float signInput{0.0f};
